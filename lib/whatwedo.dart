@@ -138,10 +138,10 @@ class _WhatWeDoPageState extends State<WhatWeDoPage> {
                   );
                 },
               style: ElevatedButton.styleFrom(
-                primary: Color(0xFF5661F6),
-                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                backgroundColor: const Color(0xFF5661F6),
+                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
               ),
-              child: Text(
+              child: const Text(
                 'Continue',
                 style: TextStyle(
                   fontSize: 25,

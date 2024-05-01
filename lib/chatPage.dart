@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import './navBar.dart';
 import 'package:open_file/open_file.dart';
-import 'dart:convert';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
@@ -22,10 +21,10 @@ class _ChatPageState extends State<ChatPage> {
   ];
 
   Future<void> sendMessage(String messg) async {
-    String url = "http://34.125.81.196:3000/chat";
+    String url = "http://34.125.55.128:3000/chat";
     if (messg.isNotEmpty) {
       var requestBody = {
-        "query": "Generate me a document, based on this information with proper Title. Give blank spaces to fill necessary information and use proper indentation. " + messg,
+        "query": "Generate me a document, based on this information with proper Title. Give blank spaces to fill necessary information and use proper indentation. $messg",
         "filename": "sample"
       };
       var response = await http.post(
@@ -47,7 +46,7 @@ class _ChatPageState extends State<ChatPage> {
   }
   
   Future<void> downloadFile() async {
-    String url = "http://34.125.81.196:3000/downloadFile";
+    String url = "http://34.125.55.128:3000/downloadFile";
     final response = await http.get(Uri.parse(url));
     if(response.statusCode==200){
       print("Successful response");
@@ -73,18 +72,16 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const NavBar(),
-      backgroundColor: Color.fromARGB(255, 75, 83, 241),
+      backgroundColor:const Color.fromARGB(255, 100, 40, 225),
       body: SingleChildScrollView(
         reverse: true,
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+        child: SizedBox(
+          // padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
           width: MediaQuery.sizeOf(context).width,
           height: MediaQuery.sizeOf(context).height,
           child: Column(
             children: [
-              const SizedBox(
-                height: 40,
-              ),
+              const SizedBox(height: 30,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -98,14 +95,17 @@ class _ChatPageState extends State<ChatPage> {
                             color: Color(0xFFE9EAFF),
                           ));
                     },
-                  )
+                  ),
+                  const SizedBox(width: 30,),
+                  Image.asset("assets/lawy-removebg-preview.png", width: 250, height: 155, fit: BoxFit.fill,)
                 ],
               ),
+              // const SizedBox(height: 80,),
               Expanded(
                 // Chat Area container
                 child: Container(
                   decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
                       color: Color(0xFFE9EAFF)),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -122,19 +122,19 @@ class _ChatPageState extends State<ChatPage> {
                                     alignment: Alignment.centerLeft,
                                     child: Container(
                                       margin: const EdgeInsets.symmetric(
-                                          vertical: 5),
+                                          vertical: 0),
                                       decoration: BoxDecoration(
-                                          color: Color.fromARGB(255, 83, 91, 255),
+                                          color: const Color.fromARGB(255, 100, 40, 225),
                                           boxShadow: const [
                                             BoxShadow(
-                                                color: Colors.white30,
-                                                blurRadius: 5),
+                                                color: Colors.grey,
+                                                blurRadius: 10),
                                           ],
                                           border: Border.all(
                                               width: 1.6,
                                               color: Colors.black87),
                                           borderRadius: const BorderRadius.all(
-                                              Radius.circular(15))),
+                                              Radius.circular(35))),
                                       child: Padding(
                                         padding: const EdgeInsets.all(15),
                                         child: TextButton(
@@ -146,7 +146,7 @@ class _ChatPageState extends State<ChatPage> {
                                             backgroundColor:
                                                 MaterialStateProperty.all<
                                                     Color>(
-                                              Color.fromARGB(255, 83, 91, 255),
+                                              const Color.fromARGB(255, 100, 40, 225),
                                             ),
                                           ),
                                           child: GestureDetector(
@@ -154,7 +154,7 @@ class _ChatPageState extends State<ChatPage> {
                                             Text(
                                               _messages[index]['message']!,
                                               style: const TextStyle(
-                                                  fontSize: 16.5,
+                                                  fontSize: 20,
                                                   color: Colors.white),
                                             ),
                                             onTap: () {
@@ -173,22 +173,22 @@ class _ChatPageState extends State<ChatPage> {
                                       margin: const EdgeInsets.symmetric(
                                           vertical: 5),
                                       decoration: BoxDecoration(
-                                          color: Color.fromARGB(255, 46, 49, 143),
+                                          color: const Color.fromARGB(255, 100, 40, 225),
                                           boxShadow: const [
                                             BoxShadow(
                                                 color: Colors.white30,
-                                                blurRadius: 5),
+                                                blurRadius: 10),
                                           ],
                                           border: Border.all(
                                               width: 1.6,
                                               color: Colors.black87),
                                           borderRadius: const BorderRadius.all(
-                                              Radius.circular(15))),
+                                              Radius.circular(35))),
                                       child: GestureDetector(
                                         child: Text(
                                           _messages[index]['message']!,
                                           style: const TextStyle(
-                                              fontSize: 16.5,
+                                              fontSize: 20,
                                               color: Colors.white),
                                         ),
                                       ),
@@ -197,8 +197,8 @@ class _ChatPageState extends State<ChatPage> {
                           },
                         ),
                       ),
-                      const SizedBox(
-                        height: 50,
+                      SizedBox(
+                        height: MediaQuery.sizeOf(context).height*0.0003,
                       ),
                       // Message Input
                       SizedBox(
@@ -210,22 +210,21 @@ class _ChatPageState extends State<ChatPage> {
                                 width: 300,
                                 height: 65,
                                 child: TextField(
-                                  textAlign: TextAlign.center,
+                                  textAlign: TextAlign.left,
                                   controller: _message,
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(30),
                                     ),
                                     filled: true,
-                                    fillColor:
-                                        Color.fromARGB(255, 75, 83, 241),
-                                    hintText: "Ask LegalAI",
+                                    fillColor: const Color.fromRGBO(255, 255, 255, 1),
+                                    hintText: "Ask Lawy",
                                     hintStyle: const TextStyle(
-                                        color: Colors.white, fontSize: 18),
+                                        color: Colors.grey, fontSize: 20),
                                   ),
                                   maxLines: null,
                                   style: const TextStyle(
-                                      color: Colors.white, fontSize: 18),
+                                      color: Colors.black, fontSize: 20),
                                 ),
                               ),
                               const SizedBox(
@@ -239,7 +238,7 @@ class _ChatPageState extends State<ChatPage> {
                                   },
                                   icon: const Icon(
                                     Icons.send,
-                                    color: Color.fromARGB(255, 75, 83, 241),
+                                    color: Color.fromARGB(255, 100, 40, 225),
                                     size: 40,
                                   )),
                             ],

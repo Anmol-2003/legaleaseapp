@@ -16,9 +16,9 @@ class _NavBarState extends State<NavBar> {
         child: ListView(
           children: [
             DrawerHeader(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 75, 83, 241),
-                    boxShadow: const [
+                    boxShadow:  [
                       BoxShadow(blurRadius: 0.5, color: Colors.black45)
                     ]),
                 child: Column(
@@ -28,10 +28,10 @@ class _NavBarState extends State<NavBar> {
                       radius: 45,
                       backgroundColor: Theme.of(context).primaryColor,
                       backgroundImage:
-                          const AssetImage("assets/vish.png"),
+                          const AssetImage("assets/anmol.jpg"),
                     ),
                     const SizedBox(height: 10,),
-                    const Text("Vishrut Grover", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)
+                    const Text("Anmol Bhardwaj", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)
                   ],
                 )),
             ListTile(

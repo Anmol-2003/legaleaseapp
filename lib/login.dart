@@ -54,10 +54,10 @@ class _LoginPageState extends State<LoginPage> {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF5661F6),
-                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                  backgroundColor: const Color(0xFF5661F6),
+                  padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                 ),
-                child: Text(
+                child: const Text(
                   'Get Started!',
                   style: TextStyle(
                     fontSize: 18,

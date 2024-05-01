@@ -71,18 +71,18 @@ class _SignInPageState extends State<SignInPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 60.0),
+            const SizedBox(height: 60.0),
             ClipOval(
               child: Image.asset(
                 'assets/Icon_light_mode.png',
                 height: 100,
-                color: Color.fromRGBO(255, 255, 255, 0.2),
+                color: const Color.fromRGBO(255, 255, 255, 0.2),
                 colorBlendMode: BlendMode.srcOver,
                 fit: BoxFit.fitHeight,
               ),
             ),
-            SizedBox(height: 20.0),
-            Text(
+            const SizedBox(height: 20.0),
+            const Text(
               'Sign In',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -90,7 +90,7 @@ class _SignInPageState extends State<SignInPage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             TextField(
               onChanged: (value) {
                 setState(() {
@@ -135,9 +135,9 @@ class _SignInPageState extends State<SignInPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SvgPicture.asset(
-                          'assets/email.svg', // Replace with your SVG asset path
                           width: 48,
                           height: 48,
+                          'assets/email.svg', // Replace with your SVG asset path
                         ),
                         SizedBox(width: 10.0),
                         Text(
@@ -153,7 +153,7 @@ class _SignInPageState extends State<SignInPage> {
                     ).copyWith(
                       side: MaterialStateProperty.resolveWith<BorderSide>(
                         (Set<MaterialState> states) {
-                          return BorderSide(
+                          return const BorderSide(
                             color: Colors.black, // Border color
                             width: 2, // Border width
                           );
@@ -164,7 +164,7 @@ class _SignInPageState extends State<SignInPage> {
                 ),
               ],
             ),
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
             Row(
               children: [
                 Expanded(
